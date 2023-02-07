@@ -1,0 +1,24 @@
+<button (click)="showAddUser()">Add User</button>
+
+<ul>
+    <li *ngFor="let user of allUsers">Ime: {{user.name | personName:''}} prezime: {{user.lastname}} <button
+            (click)="showChangeUser(user)">Change</button></li>
+</ul>
+
+<form *ngIf="user">
+    <label>Name: </label>
+    <input type="text" value={{user.name}} [(ngModel)]="user.name" name="name" />
+    <label>Lastname: </label>
+    <input type="text" value={{user.lastname}} [(ngModel)]="user.lastname" name="lastname" />
+    <button (click)="cancelUserChange()">Cancel</button>
+    <button (click)="saveUser(user)">
+        Save
+    </button>
+    <!-- <ng-template #addUser>
+        <button (click)="addUsers(user)"> Add user</button>
+    </ng-template> -->
+</form>
+
+<div style="color: blue" appHighlight (itemEvent)="editTextToOutput($event)">
+    {{textToOutput}}
+</div>
